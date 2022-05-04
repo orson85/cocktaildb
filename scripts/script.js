@@ -1,78 +1,50 @@
-
-
-// const url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list";
-
-
-// async function getData(url) {
-
-// const response = await fetch(url)
-//     return response;
-// }
-
-// getData(url).then(data => { data.json()
-//     console.log(data)
-// })
-
-// www.thecocktaildb.com/api/json/v1/1/list.php?c=list
-// www.thecocktaildb.com/api/json/v1/1/list.php?g=list
-// www.thecocktaildb.com/api/json/v1/1/list.php?i=list
-// www.thecocktaildb.com/api/json/v1/1/list.php?a=list
+const searchBar = document.getElementById("searchBar");
+const searchButton = document.getElementById("searchButton");
 
 
 
 // fetch-Abfrage 
-const daten = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mary")
-.then(response => response.json())
-.then(data => data);
+const getData = async(Term) => {
+    const request = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${Term}`);
+    const data = await request.json();
+    if (data.drinks !== null) { return data } else {alert("Nothing found.")}
+}
 
-// console.log(...daten.drinks)
-// console.log(daten.drinks[2])
-
-
-
-
-
-// console.log( eval("daten.drinks[0].strIngredient"+"1") ) //bis 15
-// console.log(daten.drinks[0].strMeasure1) //bis 15
+// Search-Button Click
+searchButton.addEventListener("click", () => getData(searchBar.value).then(daten => {
+    searchOutput(daten)
+}))
 
 
 
 
 
+//----------------------------------------------//
 
+function searchOutput(daten){
+    //Reset-Output
+    document.getElementById("hits").innerHTML='';
 
-// console.log("Anzahl Treffer: "+daten.drinks.length)
-// console.log(daten.drinks[0].idDrink)
-// console.log(daten.drinks[0].strDrink)
-// console.log(daten.drinks[0].strGlass)
-// console.log(daten.drinks[0].strAlcoholic)
-// console.log(daten.drinks[0].strInstructions)
-// console.log(daten.drinks[0].strInstructionsDE)
-// console.log(daten.drinks[0].strDrinkThumb)
-// console.log(daten.drinks[0].strImageSource)
+    //Trefferansicht: Anzahl Treffer
+    let hitCnt = document.createElement("p")
+    hitCnt.innerText = "Anzahl Treffer: "+daten.drinks.length
+    document.getElementById("hits").appendChild(hitCnt)
 
-// console.log(daten.drinks[0].strIngredient1) //bis 15
-// console.log(daten.drinks[0].strMeasure1) //bis 15
+    //Trefferansicht: Trefferliste
+    daten.drinks.forEach(element => {
+        let image = document.createElement("img")
+        let link = document.createElement("a")
+        let name = document.createElement("p")
 
+        image.setAttribute("src", element.strDrinkThumb+"/preview")
+        link.setAttribute("href", `${element.idDrink}`)
+        link.appendChild(image)
+        name.innerText=element.strDrink
 
-//Trefferansicht: Anzahl Treffer
-let hitCnt = document.createElement("p")
-hitCnt.innerText = "Anzahl Treffer: "+daten.drinks.length
-document.getElementById("hits").appendChild(hitCnt)
-
-//Trefferansicht: Trefferliste
-daten.drinks.forEach(element => {
-
-    let image = document.createElement("img")
-    let name = document.createElement("p")
-
-    image.setAttribute("src", element.strDrinkThumb+"/preview")
-    name.innerText=element.strDrink
-
-    document.getElementById("hits").appendChild(image)
-    document.getElementById("hits").appendChild(name)
-});
-
+        document.getElementById("hits").appendChild(link)
+        document.getElementById("hits").appendChild(name)
+    });
+}
 
 //Drink-Ansicht
 
@@ -119,10 +91,25 @@ iZubereitung()
 
 
 
+//----------------------------------------------//
+
+// console.log("Anzahl Treffer: "+daten.drinks.length)
+// console.log(daten.drinks[0].idDrink)
+// console.log(daten.drinks[0].strDrink)
+// console.log(daten.drinks[0].strGlass)
+// console.log(daten.drinks[0].strAlcoholic)
+// console.log(daten.drinks[0].strInstructions)
+// console.log(daten.drinks[0].strInstructionsDE)
+// console.log(daten.drinks[0].strDrinkThumb)
+// console.log(daten.drinks[0].strImageSource)
+// console.log(daten.drinks[0].strIngredient1) //bis 15
+// console.log(daten.drinks[0].strMeasure1) //bis 15
 
 
 
 
+
+//----------------------------------------------//
 
 
 
