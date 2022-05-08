@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    <link rel="stylesheet" href="https://unpkg.com/open-props"/>
+    <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
+    <!--search-container button--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+    
+</head>
+<body>
+
+
+    <p>
+    Drink ID: <span id="drinkId"></span><br>
+    Drink Name: <span id="drinkName"></span><br>
+       </p>
+    
+
+<script>
+        const drinkId = window.location.search;
+        console.log(drinkId)
+        const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php${drinkId}`
+        async function getData() {
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log(data.drinks[0].idDrink)
+
+            document.getElementById("drinkId").textContent = data.drinks[0].idDrink;
+            document.getElementById("drinkName").textContent = data.drinks[0].strDrink;
+            
+        }
+
+        window.onload = getData()
+
+     
+        // const daten = localStorage.getItem("daten");
+        // console.log(daten)
+        // let title = document.createElement("p")
+        //title.innerHTML = daten.idDrink
+        //document.getElementById("content").appendChild(title)
+    
+    
+</script>
+
+</body>
+</html>
+
+
+
+<!-- idDrink
+strDrink
+strGlass
+strAlcoholic
+strInstructions
+strInstructionsDE
+strDrinkThumb
+strImageSource
+strIngredient1
+strMeasure1
+ -->
