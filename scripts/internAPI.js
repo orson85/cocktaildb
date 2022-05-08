@@ -8,20 +8,33 @@
 
 
 // Daten von API abfragen /data
-const getData = async() => {
-    const request = await fetch('https://343505-26.web.fhgr.ch/api/gaming/data/1');
-    const data = await request.json();
-    if (data !== null) { return data } else {alert("Nothing found.")}
-}
+// const getData = async() => {
+//     const request = await fetch('https://343505-26.web.fhgr.ch/api/gaming/data/1');
+//     const data = await request.json();
+//     if (data !== null) { return data } else {alert("Nothing found.")}
+// }
 
-getData().then(daten => { console.log(daten)})
+// getData().then(daten => { console.log(daten)})
 
-// POST Befehl
+// // POST Befehl
 
-// Daten die hochgeladen werden sollen
-const params = {
-    "dataid" : 1 ,
-    "anythingelse..." : "lots of data"}
+// // Daten die hochgeladen werden sollen
+// const params = {
+//     "dataid" : 1 ,
+//     "anythingelse..." : "lots of data"}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //postData mit obigen params
