@@ -1,0 +1,21 @@
+header {
+    position: center; 
+    margin-bottom: 3em;
+    margin-top: 2em;
+    margin-left: 29%;
+    margin-right: 25%;
+}
+
+.main {
+    position: center;
+}
+
+#gatsbygif {
+    position: center;
+    height: 23em;
+}
+
+#zurueck {
+    position: center;
+    margin-top: 8%;
+}
