@@ -1,3 +1,5 @@
+/* WIRD MOMENTAN GERADE NACH SCRIPT.JS MIGRIERT
+
 function login (param1, param2) {
 
     var data = "{\r\n  \"username\": \""+ param1 +"\",\r\n  \"password\": \""+ param2 +"\"}";
@@ -16,3 +18,5 @@ function login (param1, param2) {
     xhr.setRequestHeader("Content-Type", "text/plain");
     xhr.send(JSON.stringify(data));
 }
+
+*/
