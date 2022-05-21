@@ -7,14 +7,17 @@
 
 
 
-// Daten von API abfragen /data
-// const getData = async() => {
-//     const request = await fetch('https://343505-26.web.fhgr.ch/api/gaming/data/1');
-//     const data = await request.json();
-//     if (data !== null) { return data } else {alert("Nothing found.")}
-// }
+//Daten von API abfragen /data
+const getData = async() => {
+    const request = await fetch('https://343505-26.web.fhgr.ch/api/gaming/user/');
+    const data = await request.json();
+    if (data !== null) { return data } else {alert("Nothing found.")}
+}
 
-// getData().then(daten => { console.log(daten)})
+getData().then(daten => { console.log(daten)})
+
+// const postData = async() => {
+
 
 // // POST Befehl
 
@@ -22,11 +25,6 @@
 // const params = {
 //     "dataid" : 1 ,
 //     "anythingelse..." : "lots of data"}
-
-
-
-
-
 
 
 

@@ -18,21 +18,69 @@
     <p>
     Drink ID: <span id="drinkId"></span><br>
     Drink Name: <span id="drinkName"></span><br>
-       </p>
     
+    <b>strDrink:         </b>  <span id="strDrink"></span><br>
+    <b>strAlcoholic:     </b>  <span id="strAlcoholic"></span><br>
+    <b>Instructions:  </b>  <span id="strInstructions"></span><br>
+    <b>strDrinkThumb:    </b>  <span id="strDrinkThumb"></span><br>
+    
+    <b>strIngredient1:   </b>  <span id="strIngredient1"></span><br>
+    <b>strMeasure1:      </b>  <span id="strMeasure1"></span><br>
+
+</p>
+
+
+
+
+  
+       
+
+<!--LIKE BUTTON-->
+<div>
+    <input id="like" type="button" value="Like">
+</div>
+
 
 <script>
-        const drinkId = window.location.search;
-        console.log(drinkId)
-        const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php${drinkId}`
+    const button = document.getElementById("like");
+
+    button.addEventListener('click', updateButton);
+
+    function updateButton() {
+        if (button.value === 'Like') {
+            button.value = 'Unlike';
+        } else {
+            button.value = 'Like';
+        }
+    }
+</script>
+<!--END LIKE BUTTON-->
+
+
+
+<script>
+
+        const drinkId = window.location.search; // Variable mit URL Param
+        const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php${drinkId}` //Fetch Request mit URL Param als Drink ID
         async function getData() {
             const response = await fetch(url);
             const data = await response.json();
-            console.log(data.drinks[0].idDrink)
-
+            
+            //Drink anzeigen
             document.getElementById("drinkId").textContent = data.drinks[0].idDrink;
             document.getElementById("drinkName").textContent = data.drinks[0].strDrink;
-            
+            document.getElementById("strDrink").textContent = data.drinks[0].strDrink;
+            document.getElementById("strAlcoholic").textContent = data.drinks[0].strAlcoholic;
+            document.getElementById("strInstructions").textContent = data.drinks[0].strInstructions;
+            document.getElementById("strDrinkThumb").textContent = data.drinks[0].strDrinkThumb;
+            document.getElementById("strIngredient1").textContent = data.drinks[0].strIngredient1;
+            document.getElementById("strMeasure1").textContent = data.drinks[0].strMeasure1;
+
+            for (let i = 1; i <= 15; i++) {
+                console.log(data.drinks[0].strIngredient1)
+                     
+            }
+
         }
 
         window.onload = getData()
