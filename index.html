@@ -14,8 +14,6 @@
     <script type="module" src='scripts/script.js'></script>
     <script type="module" src='scripts/searchOutput.js'></script>
     <script type="module" src='scripts/internAPI.js'></script>
-   
-    
 </head>
 <body>
 
@@ -24,9 +22,9 @@
 </header>
 
 <nav>
-    <ul><a href="userpage.html">Dein Konto</a></ul>
+    <!--<ul><a href="userpage.html">Dein Konto</a></ul>-->
     <ul><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></ul>
-    <ul><a href="logout.html">Logout</a></ul>
+    <!--<ul><a href="logout.html">Logout</a></ul>-->
 </nav>
 
 <!--PAGE: Login-Fenster-->
@@ -103,16 +101,6 @@
 
 <script>
     const button = document.getElementById("like");
-
-    button.addEventListener('click', updateButton);
-
-    function updateButton() {
-        if (button.value === 'Like') {
-            button.value = 'Unlike';
-        } else {
-            button.value = 'Like';
-        }
-    }
 </script>
 
 

@@ -11,9 +11,9 @@ function newlogin (email, username, password) {
       body: JSON.stringify(data),
     };
 
-    fetch("https://343505-26.web.fhgr.ch/api/gaming/user/", requestOptions)
+    fetch("www.thecocktaildb.com/api/", requestOptions)
       .then(response => response.json())
-      .then(result => console.log(result))
+      .then(result => {console.log(result)})
       .catch(error => {console.log('error', error);});
 
     }
