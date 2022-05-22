@@ -21,14 +21,13 @@
 
     <body>
 
+        <nav>
+            <ul><a href="userpage.html">Zurück zur Userpage</a></ul>
+        </nav>
+
         <header>
             <h1>Userdaten ändern:</h1>
         </header>
-
-        <nav>
-            <ul><a href="userpage.html">Zurück zur Userpage</a></ul>
-            <ul><a href="logout.html">Logout</a></ul>
-        </nav>
 
         <main>
             <div class="container">
@@ -37,9 +36,6 @@
                         <form>
                             <fieldset>
                                 <br>
-                                <div>
-                                    <p>Deine E-Mail-Adresse: <p id="emaileinfügen"></p></p> <!---Verknüpfung Mail einfügen-->
-                                </div>
                                 <div class="mb-3">                                 
                                     <label for="username" class="form-label">Neuer Benutzername:</label>
                                     <input type="text" class="form-control" id="changeusername">
@@ -58,7 +54,7 @@
                                 </div>
                                 <br>
                                 <div class="mb-3">   
-                                    <button type="submit" class="btn btn-primary" id="createbutton" onclick="changeuser(document.getElementById('changeusername').value,document.getElementById('changepassword').value)">Änderungen speichern</button>                                
+                                    <button type="submit" class="btn btn-primary" id="createbutton" onclick="checkchange(document.getElementById('changeusername').value,document.getElementById('changepassword').value)">Änderungen speichern</button>                                
                                 </div>
                             </fieldset>
                         </form>

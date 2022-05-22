@@ -1,16 +1,222 @@
-document.getElementById("usernameeinfügen") = username; 
+function usernameeinfuegen () {
+  let einfuegen = sessionStorage.getItem('username');
+  document.getElementById("usernameeinfuegen").innerHTML = einfuegen;
+}
 
 function logout () {
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange", function() {
-    if(this.readyState === 4) {
-        console.log(this.responseText);
-    }
-    });
-
-    xhr.open("GET", "/logout/%7Buserid%7D");
-
-    xhr.send();
+  
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+  
+    let requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+    };
+  
+    fetch("https://343505-26.web.fhgr.ch/api/gaming/logout/" + userid, requestOptions)
+      .then(response => response.json())
+      .then(result => {console.log(result)})
+      .catch(error => {console.log('error', error);});
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

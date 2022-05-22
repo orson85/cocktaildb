@@ -1,22 +1,34 @@
-/* WIRD MOMENTAN GERADE NACH SCRIPT.JS MIGRIERT
+function login (username, password) {
 
-function login (param1, param2) {
+    let logindata = {"username": username,"passwort": password,"anythingelse...": ","};
+  
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+  
+    let requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify(logindata),
+    };
+  
+    fetch("https://343505-26.web.fhgr.ch/api/gaming/user/", requestOptions)
+      .then(response => response.json())
+      .then(result => {console.log(result)})
+      .catch(error => {console.log('error', error);});
 
-    var data = "{\r\n  \"username\": \""+ param1 +"\",\r\n  \"password\": \""+ param2 +"\"}";
-    var xhr = new XMLHttpRequest();
-    console.log(data);
+    sessionStorage.setItem('username', username);
 
-    xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange", function() {
-    if(this.readyState === 4) {
-        console.log(this.responseText);
     }
-    });
 
-    xhr.open("POST", "https://343505-26.web.fhgr.ch/api/gaming/login");
-    xhr.setRequestHeader("Content-Type", "text/plain");
-    xhr.send(JSON.stringify(data));
+function checklogin (username, password) {
+
+    if (username == "" || password == "") {
+        alert("Eingabe Fehlerhaft. Bitte fülle das Formular vollständig aus.");
+    }
+
+    else {
+        login (username, password);
+        window.open("userpage.html");
+    }
+
 }
-
-*/

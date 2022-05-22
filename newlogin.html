@@ -18,7 +18,7 @@
 
     </head>
 
-    <body>
+    <body onload="document.eingabeformular.text1.focus()">
 
         <nav>
             <ul>
@@ -34,12 +34,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-8 offset-2">
-                        <form>
+                        <form name="eingabeformular">
                             <fieldset>
                                 <legend>Wer bist du?</legend>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">E-Mail:</label>
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                                    <input type="email" class="form-control" name="text1" id="email" aria-describedby="emailHelp">
                                 </div>
                                 <div class="mb-3">                          
                                     <label for="confirmemail" class="form-label">E-Mail bestätigen:</label>
@@ -63,7 +63,7 @@
                                 </div>
                                 <br>
                                 <div class="mb-3">   
-                                    <button type="submit" class="btn btn-primary" id="createbutton" formaction="userpage.html" onclick="newlogin(document.getElementById('username').value,document.getElementById('password').value)">Konto erstellen</button>                                
+                                    <button type="submit" class="btn btn-primary" id="createbutton" onclick="checkdata(document.getElementById('email').value,document.getElementById('confirmemail').value,document.getElementById('username').value,document.getElementById('confirmusername').value,document.getElementById('password').value,document.getElementById('confirmpassword').value)">Konto erstellen</button>                                
                                 </div>
                             </fieldset>
                         </form>
