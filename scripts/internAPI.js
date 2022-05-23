@@ -6,50 +6,81 @@
 
 
 
-
-//Daten von API abfragen /data
-const getData = async() => {
-    const request = await fetch('https://343505-26.web.fhgr.ch/api/gaming/user/');
-    const data = await request.json();
-    if (data !== null) { return data } else {alert("Nothing found.")}
-}
-
-getData().then(daten => { console.log(daten)})
-
-// const postData = async() => {
+// //getData
+// async function getData(field) {
+//     const request = await fetch(`https://343505-26.web.fhgr.ch/api/gaming/${field}`);
+//     const data = await request.json();
+//     if (data !== null) { return data } else {alert("Nothing found.")}
+// }
 
 
-// // POST Befehl
+// async function request(field,method,params) {
 
-// // Daten die hochgeladen werden sollen
-// const params = {
-//     "dataid" : 1 ,
-//     "anythingelse..." : "lots of data"}
-
-
-
-
-
-
-
-
-
-
-//postData mit obigen params
-// const postData = async () => {
-//     const rawResponse = await fetch('https://343505-26.web.fhgr.ch/api/gaming/data', {
-//       method: 'POST',
-//       headers: 
-//         { 'Content-Type': 'application/json' }
-//       ,
-//       body: JSON.stringify(params)
-//     });
-//     const content = await rawResponse.json();
+//   await fetch(`https://343505-26.web.fhgr.ch/api/gaming/${field}`, {
+//     method: `${method}`,
+//     headers: 
+//       { 'Content-Type': 'application/json' }
+//     ,
+//     body: JSON.stringify(params)
+//   })
+//   .then((response) => {return response.json()})
+//   .then((response) => {console.log("SUCCEEDED",response)})
+//   .catch(e => console.error("FAILED:",e.message))
   
-//     console.log(content);
-//   };
+//   ;
+//   //const content = await rawResponse.json();
 
-//   postData()
+// };
+
+// request("data/","GET")
+
+// getData("data")
+// getData("data/1")
+// getData("data/2")
+
+
+
+
+
+// POST Befehl
+
+//PostData
+async function postData(field,params) {
+
+    const rawResponse = await fetch(`https://343505-26.web.fhgr.ch/api/gaming/${field}`, {
+      method: 'POST',
+      headers: 
+        { 'Content-Type': 'application/json' }
+      ,
+      body: JSON.stringify(params)
+    });
+    const content = await rawResponse.json();
+  
+    console.log(content);
+  };
+
+  //postData("data", params)
+
+
+// PATCH Befehl
+//PostData mit obigen params
+async function patchData(field,params) {
+
+ const rawResponse = await fetch(`https://343505-26.web.fhgr.ch/api/gaming/${field}`, {
+   method: 'PATCH',
+   headers: 
+     { 'Content-Type': 'application/json' }
+   ,
+   body: JSON.stringify(params)
+ });
+ const content = await rawResponse.json();
+
+ console.log(content);
+};
+
+//patchData("data", params)
+
+
 
 
 
@@ -438,3 +469,59 @@ components:
           description: any other data
       
 */
+
+
+
+
+/* TESTAREA*/
+
+
+
+
+const request = (path, options = {}, retries) =>
+  fetch(`https://343505-26.web.fhgr.ch/api/gaming/${path}`, options)
+    .then(res => {
+      if (res.ok) {
+        return res.json()
+      }
+      if (retries>0) {
+        console.log(retries)
+        return request(path, options, retries-1)
+      }
+    })
+    .catch(error => console.error(error))
+
+
+//request("user", {}, 2).then(res => {console.log(res)})
+//request("data", {}, 2).then(res => {console.log(res)})
+
+
+const params = {
+  "dataid" : 3 ,
+  "anythingelse..." : " keep changing data 1"}
+
+const content = {
+  method: 'GET',
+  headers: 
+    { 'Content-Type': 'application/json' }
+  ,
+  //body: JSON.stringify(params)
+}
+
+request("data", content, 2).then(res => {console.log(res)})
+request("user", content, 2).then(res => {console.log(res)})
+
+
+// const expr = "POST"
+//   switch(expr) {
+//   case "GET" : console.log("get");
+//   break;
+//   case "POST" : console.log("post");
+//   break;
+//   case "PUT" : console.log("put");
+//   break;
+//   case "PATCH " : console.log("patch");
+//   break;
+//   case "DELETE" : console.log("delete");
+//   break;
+// }
