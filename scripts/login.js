@@ -1,6 +1,6 @@
 function login (username, password) {
 
-    let logindata = {"username": username,"passwort": password,"anythingelse...": ","};
+    let logindata = {"username": username,"passwort": password};
   
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -11,12 +11,28 @@ function login (username, password) {
       body: JSON.stringify(logindata),
     };
   
-    fetch("https://343505-26.web.fhgr.ch/api/gaming/user/", requestOptions)
+    fetch("https://343505-26.web.fhgr.ch/api/gaming/login/", requestOptions)
       .then(response => response.json())
       .then(result => {console.log(result)})
       .catch(error => {console.log('error', error);});
 
-    sessionStorage.setItem('username', username);
+    if (result.status === 401) {
+      return alert('Eingabe ungültig, deine Login-Daten sind inkorrekt.');
+    }
+  
+    else if (result.status === 404) {
+      return alert('Eingabe ungültig, dieser User existiert nicht.');
+    }
+  
+    else if (result.status === 500) {
+      return alert('Serverfehler, der User konnte nicht erstellt werden.');
+    }
+
+    else {
+      sessionStorage.setItem('username', username);
+      sessionStorage.setItem("userid", email);
+      sessionStorage.setItem("password", password);
+    }
 
     }
 

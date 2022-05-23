@@ -1,6 +1,8 @@
-function changeuser(email, username, password) {
+function changeuser(username, password) {
 
-  let data = {"userid": email, "anythingelse...": username, password};
+  let changeid = sessionStorage.getItem('userid');
+
+  let data = {"userid": changeid, "username": username, "password": password};
 
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -11,7 +13,7 @@ function changeuser(email, username, password) {
     body: JSON.stringify(data),
   };
 
-  fetch("https://343505-26.web.fhgr.ch/api/gaming/user/", requestOptions)
+  fetch("https://343505-26.web.fhgr.ch/api/gaming/user/" + email, requestOptions)
     .then(response => response.json())
     .then(result => {console.log(result)})
     .catch(error => {console.log('error', error);});

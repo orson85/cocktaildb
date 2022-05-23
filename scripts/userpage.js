@@ -4,6 +4,8 @@ function usernameeinfuegen () {
 }
 
 function logout () {
+
+    let logoutid = sessionStorage.getItem('userid');
   
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -13,10 +15,12 @@ function logout () {
       headers: myHeaders,
     };
   
-    fetch("https://343505-26.web.fhgr.ch/api/gaming/logout/" + userid, requestOptions)
+    fetch("https://343505-26.web.fhgr.ch/api/gaming/logout/" + logoutid, requestOptions)
       .then(response => response.json())
       .then(result => {console.log(result)})
       .catch(error => {console.log('error', error);});
+
+    sessionStorage.clear();
 }
 
 

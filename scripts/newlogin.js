@@ -16,7 +16,23 @@ function newlogin (email, username, password) {
     .then(result => {console.log(result)})
     .catch(error => {console.log('error', error);});
 
+  if (result.status === 400) {
+    return alert('Eingabe ungültig, der User konnte nicht erstellt werden.');
+  }
+
+  else if (result.status === 409) {
+    return alert('Dieser User existiert bereits.');
+  }
+
+  else if (result.status === 500) {
+    return alert('Serverfehler, der User konnte nicht erstellt werden.');
+  }
+
+  else {
     sessionStorage.setItem("username", username);
+    sessionStorage.setItem("userid", email);
+    sessionStorage.setItem("password", password);
+  }
 
   }
 
