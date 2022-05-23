@@ -475,8 +475,7 @@ components:
 
 /* TESTAREA*/
 
-
-
+//URL Webseite: 
 
 const request = (path, options = {}, retries) =>
   fetch(`https://343505-26.web.fhgr.ch/api/gaming/${path}`, options)
@@ -508,20 +507,7 @@ const content = {
   //body: JSON.stringify(params)
 }
 
-request("data", content, 2).then(res => {console.log(res)})
-request("user", content, 2).then(res => {console.log(res)})
+request("user/0/", content, 2).then(res => {console.log(res)})
+//request("data", content, 2).then(res => {console.log(res)})
+//request("user/ursgros@gmail.com", content, 2).then(res => {console.log(res)})
 
-
-// const expr = "POST"
-//   switch(expr) {
-//   case "GET" : console.log("get");
-//   break;
-//   case "POST" : console.log("post");
-//   break;
-//   case "PUT" : console.log("put");
-//   break;
-//   case "PATCH " : console.log("patch");
-//   break;
-//   case "DELETE" : console.log("delete");
-//   break;
-// }
