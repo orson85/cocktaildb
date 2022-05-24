@@ -14,78 +14,58 @@
 </head>
 <body>
 
-    <a href="./index.html">Back</a>
-
+    
+    <a id="back" href="./index.html">Back</a>
+    
+    <!-- AUS ABSTELLGELEIS -> LOESCHEN SOFERN NICHT UMGESETZT -->
+    <!-- <script>
+    //Schaut ob searchTerm in sessionStorage gespeichert. Wenn ja, wird der SearchTerm an den "Back"-Link angefügt.
+    //Bei XY 
+        if (sessionStorage.getItem("searchTerm") != null) {
+            console.log(sessionStorage.getItem("searchTerm"))
+            document.getElementById("back").href = `./index.html?${sessionStorage.getItem("searchTerm")}`
+        }
+    </script> -->
+    <!-- ENDE: AUS ABSTELLGELEIS -> LOESCHEN SOFERN NICHT UMGESETZT -->
+    
     
     Drink ID: <span id="drinkId"></span><br>
     <br>
     <img id="" src="" alt="">
     
     <b>Name:         </b>  <span id="strDrink"></span><br>
-    <b>This drink is:     </b>  <span id="strAlcoholic"></span><br>
     <b>Ingredients:   </b>  <span id="strIngredient"></span><br>
     <b>Preparation:    </b>  <span id="strInstructions"></span><br>
-       
+    <div id="likeBtn"></div>       
 
 <!--LIKE BUTTON-->
-<div>
-    <input id="like" type="button" value="Like">
-</div>
+
+
 
 
 <script>
-    
-    sessionStorage.setItem("username", 'fdlksdjfdk' );
-    let user = sessionStorage.username
-    const request = (path, options = {}, retries) =>
-  fetch(`https://343505-26.web.fhgr.ch/api/gaming/${path}`, options)
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      if (retries>0) {
-        console.log(retries)
-        return request(path, options, retries-1)
-      }
-    })
-    .catch(error => console.error(error))
-
-
-const params = {"anythingelse..." : "{178332, 13196}"}
-
-
-
-const content = {method: 'GET', headers: { 'Content-Type': 'application/json' }}
-  
-  //body: JSON.stringify(params)
-
-
-//API Request: Input = username aus SessionStorage, Output = Index des Users
-request("user/0", {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10).then(res => {
-
-        
-    res.forEach((element,index) => {
-        if (element.username == user) {
-            console.log("user",element)
-            console.log("index",index)
-            console.log("dataelement:",element["anythingelse..."])
-            //anythingelse... kann nicht angesteuert werden bei der API
-            //an dieser Stelle sollte dann ein POST Befehl kommen mit
-        }
-    });
-})
-
-
-
-
-
+//NUR ENTWICKLUNG
+//sessionStorage.clear()
+sessionStorage.setItem("username", 'fdlksdjfdk' ); //nur zum Testing, ersetzen sobald Login steht
+//NUR ENTWICKLUNG
 </script>
+
 <script>
+//Like Button wird angezeigt, sofern username in sessionStorage enthalten.
+if (sessionStorage.getItem("username") != null) {
+    let button = document.createElement("input")
+    button.setAttribute("id","like")
+    button.setAttribute("type","button")
+    button.setAttribute("value","Like")
+    document.getElementById("likeBtn").appendChild(button)
+
+
+    button.addEventListener('click', updateButton);
+    }
 
     const button = document.getElementById("like");
 
-    button.addEventListener('click', updateButton);
-
+    
     function updateButton() {
         if (button.value === 'Like') {
             button.value = 'Unlike';
@@ -136,22 +116,60 @@ request("user/0", {method: 'GET', headers: { 'Content-Type': 'application/json' 
                 
             });
 
-            
             //Mixen und servieren
             document.getElementById("drinkId").textContent = data.drinks[0].idDrink;
             document.getElementById("strDrink").textContent = data.drinks[0].strDrink;
-            document.getElementById("strAlcoholic").textContent = data.drinks[0].strAlcoholic;
             document.getElementById("strInstructions").textContent = data.drinks[0].strInstructions;
-            document.querySelector("img").src=  data.drinks[0].strDrinkThumb
-            
-            
+            document.querySelector("img").src=  data.drinks[0].strDrinkThumb       
         }
 
         window.onload = getData()
-
-      
-    
 </script>
+
+
+<script>
+    //Favoritenliste User     
+        //NACHHER IN EIGENES MODUL ÜBERTRAGEN
+        const request = (path, options = {}, retries) =>
+        fetch(`https://343505-26.web.fhgr.ch/api/gaming/${path}`, options)
+        .then(res => {
+          if (res.ok) {
+            return res.json()
+          }
+          if (retries>0) {
+            console.log(retries)
+            return request(path, options, retries-1)
+          }
+        })
+        .catch(error => console.error(error))
+    
+    
+    const params = {"anythingelse..." : "{178332, 13196}"}
+    const content = {method: 'GET', headers: { 'Content-Type': 'application/json' }}  
+    //body: JSON.stringify(params)
+    
+    
+    //API Request: Input = username aus SessionStorage, Output = Index des Users
+    //Schaut welcher User "online" ist 
+    let user = sessionStorage.username 
+    
+    //UserListe holen
+    function getVal() {return request("user/0/", {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10)}
+    
+    //getUser = User holen, der in SessionStorage angegeben ist
+    const getUser = getVal().then(res => {return res.find(element => element.username == user)})
+    //getFavList = Favoritenliste des Users aus SessionStorage
+    const getFavList = getUser.then(e => {return e["anythingelse..."]})
+    //drinkIdURL = Drink ID aus URL-Param. In String umgewandelt & per Replace reine ID extrahiert.
+    const drinkIdURL = JSON.stringify(window.location.search).replace(/[^0-9]/g,'')
+    
+    /*In der Favoritenliste des Users schauen, ob der auf der Seite angezeigte Drink bereits ein Favorit ist oder nicht.
+    Wenn der Drink in der Liste vorkommt, wird beim Like Button der Wert auf "Unlike" gestellt */
+    getFavList.then(e => {return e.split()})
+    .then(e => (e.includes(drinkIdURL)) ? button.setAttribute("value","Unlike") : button.setAttribute("value","Like")
+    )
+    //ENDE: Favoritenliste User     
+    </script>
 
 </body>
 </html>

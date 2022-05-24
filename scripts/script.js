@@ -15,6 +15,7 @@ const getData = async(Term) => {
 searchButton.addEventListener("click", () => getData(searchBar.value).then(daten => {
     searchOutput(daten)
     localStorage.setItem("daten", JSON.stringify(daten));
+    sessionStorage.setItem("searchTerm", searchBar.value)
 }))
 
 
