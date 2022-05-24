@@ -62,17 +62,18 @@ const content = {method: 'GET', headers: { 'Content-Type': 'application/json' }}
 
 //API Request: Input = username aus SessionStorage, Output = Index des Users
 request("user/0", {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10).then(res => {
+
+        
     res.forEach((element,index) => {
         if (element.username == user) {
             console.log("user",element)
-            console.log("foreach",element.username)
             console.log("index",index)
+            console.log("dataelement:",element["anythingelse..."])
             //anythingelse... kann nicht angesteuert werden bei der API
             //an dieser Stelle sollte dann ein POST Befehl kommen mit
-        } 
+        }
     });
 })
-
 
 
 
