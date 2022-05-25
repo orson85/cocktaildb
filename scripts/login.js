@@ -31,7 +31,7 @@ function login (username, password) {
     else {
       sessionStorage.setItem('username', username);
       sessionStorage.setItem("userid", email);
-      sessionStorage.setItem("password", password);
+      sessionStorage.setItem("status", "loggedin");
     }
 
     }
@@ -46,5 +46,17 @@ function checklogin (username, password) {
         login (username, password);
         window.open("userpage.html");
     }
+
+}
+
+
+
+function loginstatus () {
+  let status = sessionStorage.getItem('status')
+
+  while (status == "loggedin") {
+    document.getElementById("loginbutton").text="Dein Konto";
+    document.getElementById("loginbutton").onclick="window.open(userpage.html)";
+  }
 
 }

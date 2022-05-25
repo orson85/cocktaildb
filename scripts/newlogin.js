@@ -31,7 +31,7 @@ function newlogin (email, username, password) {
   else {
     sessionStorage.setItem("username", username);
     sessionStorage.setItem("userid", email);
-    sessionStorage.setItem("password", password);
+    sessionStorage.setItem("status", "loggedin");
   }
 
   }
