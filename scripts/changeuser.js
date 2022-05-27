@@ -8,12 +8,12 @@ function changeuser(username, password) {
   myHeaders.append("Content-Type", "application/json");
 
   let requestOptions = {
-    method: 'PUT',
+    method: 'PATCH',
     headers: myHeaders,
     body: JSON.stringify(data),
   };
 
-  fetch("https://343505-26.web.fhgr.ch/api/gaming/user/" + email, requestOptions)
+  fetch("https://343505-26.web.fhgr.ch/api/gaming/user/", requestOptions)
     .then(response => response.json())
     .then(result => {console.log(result)})
     .catch(error => {console.log('error', error);});

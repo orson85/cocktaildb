@@ -12,14 +12,23 @@ function login (username, password) {
     };
   
     fetch("https://343505-26.web.fhgr.ch/api/gaming/login/", requestOptions)
-      .then(response => response.text())
+      .then (response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
 
-        sessionStorage.setItem('username', username);
-        sessionStorage.setItem("status", "loggedin");
+      if (response.ok) {
+      
+      sessionStorage.setItem('username', username);
+      sessionStorage.setItem("status", "loggedin");
+      
+      window.open("userpage.html");
       }
-    
+
+      else {
+        return alert("Beim Login ist ein Fehler aufgetreten. Bitte versuche es noch einmal.")
+      }
+      }
+
 
 function checklogin (username, password) {
 
@@ -29,7 +38,6 @@ function checklogin (username, password) {
 
     else {
         login (username, password);
-        window.open("userpage.html");
     }
 
 }
@@ -37,12 +45,14 @@ function checklogin (username, password) {
 function loginstatus() {
   let status = sessionStorage.getItem('status');
 
-  const btn  = document.getElementById("loginbutton");
+  const btn  = document.getElementById("indexlogin");
+  const btnlink = document.getElementById("btnlink")
   const konto = "Dein Konto";
 
   if (status == "loggedin") {
     btn.innerText = konto;
-    /*btn.onclick = window.open("userpage.html"); */
+    btn.onclick = "";
+    btnlink.href = "userpage.html";
   }
 
   else {

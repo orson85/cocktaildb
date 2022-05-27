@@ -16,9 +16,18 @@ function newlogin (email, username, password) {
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
 
-    sessionStorage.setItem("username", username);
-    sessionStorage.setItem("userid", email);
-    sessionStorage.setItem("status", "loggedin");
+    if (response.ok) {
+      
+      sessionStorage.setItem("username", username);
+      sessionStorage.setItem("userid", email);
+      sessionStorage.setItem("status", "loggedin");
+      
+      window.open("userpage.html");
+      }
+
+      else {
+        return alert("Beim Login ist ein Fehler aufgetreten. Bitte versuche es noch einmal.")
+      }
   }
 
 
