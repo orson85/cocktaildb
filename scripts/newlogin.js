@@ -21,7 +21,6 @@ function newlogin (email, username, password) {
     sessionStorage.setItem("status", "loggedin");
   }
 
-
 function checkdata (email, confirmemail, username, confirmusername, password, confirmpassword) {
 
   if (email == "" || confirmemail == "" || username == "" || confirmusername == "" || password == "" || confirmpassword == "") {
