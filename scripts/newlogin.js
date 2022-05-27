@@ -30,7 +30,6 @@ function newlogin (email, username, password) {
       }
   }
 
-
 function checkdata (email, confirmemail, username, confirmusername, password, confirmpassword) {
 
   if (email == "" || confirmemail == "" || username == "" || confirmusername == "" || password == "" || confirmpassword == "") {
