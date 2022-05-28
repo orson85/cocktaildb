@@ -162,27 +162,37 @@ if (sessionStorage.getItem("username") != null) {
     //getUserID
     const getUserID = getVal().then(res => {return res.find(element => element.username == user)}).then(e => {return(e.userid)})
     
-    
     //getFavList = Favoritenliste des Users aus SessionStorage
     const getFavList = getUser.then(e => {return e["anythingelse..."]})
-    //drinkIdURL = Drink ID aus URL-Param. In String umgewandelt & per Replace reine ID extrahiert.
+    
+    //drinkIdURL = Drink ID aus URL-Param. In String umgewandelt & per replace() reine ID extrahiert.
     const drinkIdURL = JSON.stringify(window.location.search).replace(/[^0-9]/g,'')
     
     /*In der Favoritenliste des Users schauen, ob der auf der Seite angezeigte Drink bereits ein Favorit ist oder nicht.
     Wenn der Drink in der Liste vorkommt, wird beim Like Button der Wert auf "Unlike" gestellt */
-    getFavList.then(e => {return e.split()}).then(e => (e.includes(drinkIdURL)) ? button.setAttribute("value","Unlike") : button.setAttribute("value","Like")
-    )
-
-    getUserID.then(userID => request(`user/${userID}`, {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10).then(e=>console.log(e)))
+    getFavList.then(value => {switch(typeof value){
+            //case "string": console.log("num"); break;
+            case "number": return (value.toString()==drinkIdURL) ? button.setAttribute("value","Unlike") : button.setAttribute("value","Like"); break;
+            case "object": return (value.includes(drinkIdURL)) ? button.setAttribute("value","Unlike") : button.setAttribute("value","Like"); break;
+        }
+    })
     
-    console.log(button.value)
-
-    button.value == "Like" ? console.log("true") : console.log("false")
-
     //ENDE: Favoritenliste User     
     </script>
 
 </body>
 </html>
+
+<script>
+
+    
+getUserID.then(userID => request(`user/${userID}`, {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10).then(e=>console.log(e)))
+    
+    //console.log(button.value)
+    //button.value == "Like" ? console.log("true") : console.log("false")
+
+
+
+</script>
 
 
