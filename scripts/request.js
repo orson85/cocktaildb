@@ -1,3 +1,5 @@
+
+//Fetch Funktion, die wiederholt versucht die Daten zu holen, wenn Server Response nicht "ok" ist.
 const request = (path, options = {}, retries) =>
         fetch(`https://343505-26.web.fhgr.ch/api/gaming/${path}`, options)
         .then(res => {
@@ -5,7 +7,7 @@ const request = (path, options = {}, retries) =>
             return res.json()
           }
           if (retries>0) {
-            console.log(retries)
+            console.log("retries left", retries)
             return request(path, options, retries-1)
           }
         })
