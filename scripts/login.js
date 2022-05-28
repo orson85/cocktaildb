@@ -1,7 +1,7 @@
 function login (username, password) {
 
-    let logindata = {"username": username,"passwort": password};
-  
+    let logindata = {"username": username,"password": password};
+    
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
   
@@ -12,22 +12,32 @@ function login (username, password) {
     };
   
     fetch("https://343505-26.web.fhgr.ch/api/gaming/login/", requestOptions)
-      .then (response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+      .then(response => {
+        if (response.ok==true) {
+          console.log("ja")
+          sessionStorage.setItem('username', username);
+          sessionStorage.setItem("status", "loggedin");
 
-      if (response.ok) {
-      
-      sessionStorage.setItem('username', username);
-      sessionStorage.setItem("status", "loggedin");
-      
-      window.open("userpage.html");
-      }
+          window.open("userpage.html");
+          
+        }
 
-      else {
-        return alert("Beim Login ist ein Fehler aufgetreten. Bitte versuche es noch einmal.")
-      }
-      }
+      })
+
+      
+    
+
+
+
+      // else {
+      //   return alert("Beim Login ist ein Fehler aufgetreten. Bitte versuche es noch einmal.")
+      // }
+      
+}
+
+
+login("string","string")
+
 
 
 function checklogin (username, password) {
@@ -41,6 +51,9 @@ function checklogin (username, password) {
     }
 
 }
+
+
+
 
 function loginstatus() {
   let status = sessionStorage.getItem('status');
@@ -62,4 +75,3 @@ function loginstatus() {
   console.log(btn);
   console.log(status);
 }
-

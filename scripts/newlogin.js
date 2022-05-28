@@ -1,6 +1,6 @@
 function newlogin (email, username, password) {
 
-  let data = {"userid": email,"username": username,"passwort": password,"anythingelse...": ","};
+  let data = {"userid": email,"username": username,"password": password,"anythingelse...": ","};
 
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
