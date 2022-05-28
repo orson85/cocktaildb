@@ -9,24 +9,12 @@
     <link rel="stylesheet" href="https://unpkg.com/open-props"/>
     <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
     <!--search-container button--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-           
     
 </head>
 <body>
 
     
     <a id="back" href="./index.html">Back</a>
-    
-    <!-- AUS ABSTELLGELEIS -> LOESCHEN SOFERN NICHT UMGESETZT -->
-    <!-- <script>
-    //Schaut ob searchTerm in sessionStorage gespeichert. Wenn ja, wird der SearchTerm an den "Back"-Link angefügt.
-    //Bei XY 
-        if (sessionStorage.getItem("searchTerm") != null) {
-            console.log(sessionStorage.getItem("searchTerm"))
-            document.getElementById("back").href = `./index.html?${sessionStorage.getItem("searchTerm")}`
-        }
-    </script> -->
-    <!-- ENDE: AUS ABSTELLGELEIS -> LOESCHEN SOFERN NICHT UMGESETZT -->
     
     
     Drink ID: <span id="drinkId"></span><br>
@@ -50,31 +38,7 @@ sessionStorage.setItem("username", 'fdlksdjfdk' ); //nur zum Testing, ersetzen s
 //NUR ENTWICKLUNG
 </script>
 
-<script>
-//Like Button wird angezeigt, sofern username in sessionStorage enthalten.
-if (sessionStorage.getItem("username") != null) {
-    let button = document.createElement("input")
-    button.setAttribute("id","like")
-    button.setAttribute("type","button")
-    button.setAttribute("value","Like")
-    document.getElementById("likeBtn").appendChild(button)
 
-
-    button.addEventListener('click', updateButton);
-    }
-
-    const button = document.getElementById("like");
-
-    
-    function updateButton() {
-        if (button.value === 'Like') {
-            button.value = 'Unlike';
-        } else {
-            button.value = 'Like';
-        }
-    }
-</script>
-<!--END LIKE BUTTON-->
 
 
 
@@ -127,66 +91,18 @@ if (sessionStorage.getItem("username") != null) {
 </script>
 
 
-<script>
-    //Favoritenliste User     
-        //NACHHER IN EIGENES MODUL ÜBERTRAGEN
-        const request = (path, options = {}, retries) =>
-        fetch(`https://343505-26.web.fhgr.ch/api/gaming/${path}`, options)
-        .then(res => {
-          if (res.ok) {
-            return res.json()
-          }
-          if (retries>0) {
-            console.log(retries)
-            return request(path, options, retries-1)
-          }
-        })
-        .catch(error => console.error(error))
-    
-    
-    const params = {"anythingelse..." : "{178332, 13196}"}
-    const content = {method: 'GET', headers: { 'Content-Type': 'application/json' }}  
-    //body: JSON.stringify(params)
-    
-    
-    //API Request: Input = username aus SessionStorage, Output = Index des Users
-    //Schaut welcher User "online" ist 
-    let user = sessionStorage.username 
-    
-    //UserListe holen
-    function getVal() {return request("user/0/", {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10)}
-    
-    //getUser = User holen, der in SessionStorage angegeben ist
-    const getUser = getVal().then(res => {return res.find(element => element.username == user)})
-    
-    //getUserID
-    const getUserID = getVal().then(res => {return res.find(element => element.username == user)}).then(e => {return(e.userid)})
-    
-    //getFavList = Favoritenliste des Users aus SessionStorage
-    const getFavList = getUser.then(e => {return e["anythingelse..."]})
-    
-    //drinkIdURL = Drink ID aus URL-Param. In String umgewandelt & per replace() reine ID extrahiert.
-    const drinkIdURL = JSON.stringify(window.location.search).replace(/[^0-9]/g,'')
-    
-    /*In der Favoritenliste des Users schauen, ob der auf der Seite angezeigte Drink bereits ein Favorit ist oder nicht.
-    Wenn der Drink in der Liste vorkommt, wird beim Like Button der Wert auf "Unlike" gestellt */
-    getFavList.then(value => {switch(typeof value){
-            //case "string": console.log("num"); break;
-            case "number": return (value.toString()==drinkIdURL) ? button.setAttribute("value","Unlike") : button.setAttribute("value","Like"); break;
-            case "object": return (value.includes(drinkIdURL)) ? button.setAttribute("value","Unlike") : button.setAttribute("value","Like"); break;
-        }
-    })
-    
-    //ENDE: Favoritenliste User     
-    </script>
 
 </body>
+
+<script type="module" src="scripts/likeUnlike.js"></script>     
+  
+
 </html>
 
 <script>
 
     
-getUserID.then(userID => request(`user/${userID}`, {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10).then(e=>console.log(e)))
+//getUserID.then(userID => request(`user/${userID}`, {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10).then(e=>console.log(e)))
     
     //console.log(button.value)
     //button.value == "Like" ? console.log("true") : console.log("false")
