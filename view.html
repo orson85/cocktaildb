@@ -45,8 +45,8 @@
 
 <script>
 //NUR ENTWICKLUNG
-//sessionStorage.clear()
 sessionStorage.setItem("username", 'fdlksdjfdk' ); //nur zum Testing, ersetzen sobald Login steht
+//sessionStorage.clear()
 //NUR ENTWICKLUNG
 </script>
 
@@ -158,6 +158,11 @@ if (sessionStorage.getItem("username") != null) {
     
     //getUser = User holen, der in SessionStorage angegeben ist
     const getUser = getVal().then(res => {return res.find(element => element.username == user)})
+    
+    //getUserID
+    const getUserID = getVal().then(res => {return res.find(element => element.username == user)}).then(e => {return(e.userid)})
+    
+    
     //getFavList = Favoritenliste des Users aus SessionStorage
     const getFavList = getUser.then(e => {return e["anythingelse..."]})
     //drinkIdURL = Drink ID aus URL-Param. In String umgewandelt & per Replace reine ID extrahiert.
@@ -165,9 +170,15 @@ if (sessionStorage.getItem("username") != null) {
     
     /*In der Favoritenliste des Users schauen, ob der auf der Seite angezeigte Drink bereits ein Favorit ist oder nicht.
     Wenn der Drink in der Liste vorkommt, wird beim Like Button der Wert auf "Unlike" gestellt */
-    getFavList.then(e => {return e.split()})
-    .then(e => (e.includes(drinkIdURL)) ? button.setAttribute("value","Unlike") : button.setAttribute("value","Like")
+    getFavList.then(e => {return e.split()}).then(e => (e.includes(drinkIdURL)) ? button.setAttribute("value","Unlike") : button.setAttribute("value","Like")
     )
+
+    getUserID.then(userID => request(`user/${userID}`, {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10).then(e=>console.log(e)))
+    
+    console.log(button.value)
+
+    button.value == "Like" ? console.log("true") : console.log("false")
+
     //ENDE: Favoritenliste User     
     </script>
 
