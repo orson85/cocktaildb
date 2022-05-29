@@ -16,6 +16,7 @@ request(`user/`, {method: 'GET', headers: { 'Content-Type': 'application/json' }
             let li = document.createElement("li");
             let link = document.createElement("a");
             let url = new URL("http://127.0.0.1:5500/view.html")
+            
             url.searchParams.set('i', element.drinks[0].idDrink)
             link.setAttribute('href', url);
             link.innerText = element.drinks[0].strDrink

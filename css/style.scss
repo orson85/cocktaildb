@@ -4,12 +4,31 @@ body {
     background-color: mistyrose;
 }
 
+#suche {
+  display: flex;
+  justify-content: center;
+}
 
+#hitCnt {
+  display: flex;
+  justify-content: center;
+}
 
 #hits {
   display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: .3em;
 
 }
+
+.hit {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  border: #333;
+  border-style: solid;
+}
+
 
 
 
