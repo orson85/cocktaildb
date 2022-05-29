@@ -1,27 +1,23 @@
 import request from "./request.js"
 
-
 //User in SessionStorage holen
 const user = sessionStorage.username 
 //Drink ID aus URL holen
 const drinkIdURL = JSON.stringify(window.location.search).replace(/[^0-9]/g,'')
 
-
 //Zeigt einen Like Button an, wenn ein User in SessionStorage ist.    
-if (sessionStorage.getItem("username") != null) {
+if (sessionStorage.getItem("status") == "loggedin") {
     let button = document.createElement("input")
+    
     button.setAttribute("id","like")
     button.setAttribute("type","button")
     button.setAttribute("value","Like")
     document.getElementById("likeBtn").appendChild(button)
-
-
     button.addEventListener('click', updateButton);
     }
 
     const button = document.getElementById("like");
 
-    
     function updateButton() {
         if (button.value === 'Like') {
 
@@ -38,7 +34,6 @@ if (sessionStorage.getItem("username") != null) {
         if (element.username == user) { console.log(element["anythingelse..."])
         ;};}))
 
-
     //fügt drinkIDURL in aktuellen User ein. (überschreibt alles)
     request(`user/0`, {}, 3)
     .then(e => e.forEach(element => {
@@ -51,24 +46,12 @@ if (sessionStorage.getItem("username") != null) {
                     userid: element.userid,
                     ["anythingelse..."] : "14456,13198,178332"
                     })
-                
                 }, 3)
             };
     }));
     
 
-      request("user/ursgros@gmail.com", {}, 3).then(e => console.log("hier",e["anythingelse..."][0]))
-
-
-// switch (key) {
-//     case "delete":
-        
-//         break;
-//     case "add":
-        
-//         break;
-// }
-
+    request("user/ursgros@gmail.com", {}, 3).then(e => console.log("hier",e["anythingelse..."][0]))
 
     
 //Schauen, ob der User diesen Drink bereits in seiner Favoritenliste hat. So feststellen, ob Button auf "Like" / "Unlike" geschaltet sein soll.        
@@ -86,4 +69,3 @@ request("user/0/", {method: 'GET', headers: { 'Content-Type': 'application/json'
             case "object": return (value.includes(drinkIdURL)) ? button.setAttribute("value","Unlike") : button.setAttribute("value","Like"); break;
         }
     })
-

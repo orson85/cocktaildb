@@ -14,13 +14,21 @@ function login (username, password) {
     fetch("https://343505-26.web.fhgr.ch/api/gaming/login/", requestOptions)
       .then(response => {
         if (response.ok==true) {
-          console.log("ja")
           sessionStorage.setItem('username', username);
           sessionStorage.setItem("status", "loggedin");
 
           window.open("userpage.html");
+<<<<<<< HEAD
       
         }
+=======
+          
+        }
+
+      })
+
+
+>>>>>>> 587151ff996f3f2666374462e24a1f422265c336
 
         else {
           alert("Beim Login ist ein Fehler aufgetreten. Bitte versuche es noch einmal.")
@@ -31,7 +39,6 @@ function login (username, password) {
 }
 
 
-login("string","string")
 
 
 
