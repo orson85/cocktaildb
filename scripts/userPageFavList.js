@@ -8,5 +8,11 @@ request("user/0/", {method: 'GET', headers: { 'Content-Type': 'application/json'
     .then(e => {return e["anythingelse..."]})
     .then(value => fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${value}`))
     .then(e => e.json())
-    .then(e => e.drinks.forEach(element => {document.getElementById("favList").innerHTML = element.strDrink;}));
+    .then(e => e.drinks.forEach(element => {
+        let link = document.createElement("a");
+        let url = new URL("http://127.0.0.1:5500/view.html")
+        url.searchParams.set('i', element.idDrink)
+        link.setAttribute('href', url);
+        document.getElementById("favList").innerHTML = element.strDrink;}));
      
+    
