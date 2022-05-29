@@ -19,19 +19,14 @@ function login (username, password) {
           sessionStorage.setItem("status", "loggedin");
 
           window.open("userpage.html");
-          
+      
         }
 
+        else {
+          alert("Beim Login ist ein Fehler aufgetreten. Bitte versuche es noch einmal.")
+          }
+
       })
-
-      
-    
-
-
-
-      // else {
-      //   return alert("Beim Login ist ein Fehler aufgetreten. Bitte versuche es noch einmal.")
-      // }
       
 }
 
