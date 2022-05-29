@@ -1,4 +1,4 @@
-function login (username, password) {
+function login (username, password) { //Diese Funktion ist dazu da, den Request für das Login zu stellen. 
 
     let logindata = {"username": username,"password": password};
     
@@ -10,39 +10,36 @@ function login (username, password) {
       headers: myHeaders,
       body: JSON.stringify(logindata),
     };
-  
+
+    const request = (retries) =>    //Testing, Fehlervermeidung auf Serverseite
     fetch("https://343505-26.web.fhgr.ch/api/gaming/login/", requestOptions)
-      .then(response => {
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        if (retries>0) {
+          console.log(retries)
+          return request(retries-1)
+        }
+      })
+      .catch(error => console.error(error))
+
+      .then(response => {             //Dieser Teil der Funktion ist dazu da, allfällige Fehlermeldungen abzufangen. 
         if (response.ok==true) {
           sessionStorage.setItem('username', username);
           sessionStorage.setItem("status", "loggedin");
 
           window.open("userpage.html");
-<<<<<<< HEAD
       
         }
-=======
-          
-        }
-
-      })
-
-
->>>>>>> 587151ff996f3f2666374462e24a1f422265c336
 
         else {
-          alert("Beim Login ist ein Fehler aufgetreten. Bitte versuche es noch einmal.")
+          alert("Error ",error,". Beim Login ist ein Fehler aufgetreten. Bitte versuche es noch einmal.")
           }
-
-      })
-      
+      })   
 }
 
-
-
-
-
-function checklogin (username, password) {
+function checklogin (username, password) { //Diese Funktion ist dazu da, zu überprüfen, ob die Eingabe nicht einfach leer ist. 
 
     if (username == "" || password == "") {
         alert("Eingabe Fehlerhaft. Bitte fülle das Formular vollständig aus.");
@@ -51,13 +48,9 @@ function checklogin (username, password) {
     else {
         login (username, password);
     }
-
 }
 
-
-
-
-function loginstatus() {
+function loginstatus() {  //Diese Funktion ist dazu da, den Login-Button auf index.html so zu ändern, damit man auf sein eigenes User-Konto kommt.
   let status = sessionStorage.getItem('status');
 
   const btn  = document.getElementById("indexlogin");
