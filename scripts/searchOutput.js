@@ -1,6 +1,7 @@
 function searchOutput(daten){
     //Reset-Output
     document.getElementById("hits").innerHTML='';
+    document.getElementById("hitCnt").innerHTML='';
 
     //Trefferansicht: Anzahl Treffer
     let hitCnt = document.createElement("p")

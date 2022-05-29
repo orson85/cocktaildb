@@ -18,6 +18,13 @@ searchButton.addEventListener("click", () => getData(searchBar.value).then(daten
     sessionStorage.setItem("searchTerm", searchBar.value)
 }))
 
+searchBar.addEventListener("keyup", function(event){
+    event.preventDefault();
+    if (event.key === "Enter") {
+        console.log("yes")
+        getData(searchBar.value).then(daten => {searchOutput(daten)}
+)}})
+
 window.addEventListener("load", () => {if (sessionStorage.searchTerm != null) {
     getData(sessionStorage.searchTerm).then(daten => {searchOutput(daten)})
 }})
