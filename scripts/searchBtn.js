@@ -1,5 +1,6 @@
 import searchOutput from "./searchOutput.js"
-//import openHit from "./openHit.js"
+
+
 
 const searchBar = document.getElementById("searchBar");
 const searchButton = document.getElementById("searchButton");
@@ -14,8 +15,10 @@ const getData = async(Term) => {
 // Search-Button Click
 searchButton.addEventListener("click", () => getData(searchBar.value).then(daten => {
     searchOutput(daten)
-    localStorage.setItem("daten", JSON.stringify(daten));
     sessionStorage.setItem("searchTerm", searchBar.value)
 }))
 
+window.addEventListener("load", () => {if (sessionStorage.searchTerm != null) {
+    getData(sessionStorage.searchTerm).then(daten => {searchOutput(daten)})
+}})
 

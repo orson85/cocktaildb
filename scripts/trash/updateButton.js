@@ -1,23 +1,8 @@
-import request from "./request.js"
-
-
-//User in SessionStorage holen
-const user = sessionStorage.username 
-//Drink ID aus URL holen
-const drinkIdURL = JSON.stringify(window.location.search).replace(/[^0-9]/g,'')
-
-//favList in SessionStorage speichern
-request("user/0/", {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10)
-    .then(res => {return res.find(element => element.username == user)})
-    .then(e => {sessionStorage.setItem("favList", e["anythingelse..."] )})
-
-//userID in SessionStorage speichern
-request("user/0/", {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10)
-    .then(res => {return res.find(element => element.username == user)})
-    .then(e => {sessionStorage.setItem("userid", e.userid)}) 
+import request from "../request.js"
 
 
 
+    
 
 //Like-Button wird angezeigt, wenn "loggedin" in Sessionstorage
 if (sessionStorage.getItem("status") == "loggedin") {
@@ -27,10 +12,11 @@ if (sessionStorage.getItem("status") == "loggedin") {
     button.setAttribute("type","button")
     button.setAttribute("value","")
     document.getElementById("likeBtn").appendChild(button)
+    
     button.addEventListener('click', updateButton);
     }
 
-const button = document.getElementById("like");
+    const button = document.getElementById("like");
 
 
 //Wird 
@@ -63,34 +49,19 @@ function updateButton() {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'} ,
         body: JSON.stringify({
-            userid: sessionStorage.userid,
+            userid: sessionStorage.getItem("userid"),
             username: sessionStorage.getItem("username"),
             ["anythingelse..."] : sessionStorage.favList
         })
     };
-      console.log(requestOptions.body)
-      request(`/user/`, requestOptions, 3)
+    
+    console.log(requestOptions.body)
+
+    request(`/user`, requestOptions, 3)
     }
 
     
-//Schauen, ob der User diesen Drink bereits in seiner Favoritenliste hat. So feststellen, ob Button auf "Like" / "Unlike" geschaltet sein soll.        
-request("user/0/", {method: 'GET', headers: { 'Content-Type': 'application/json' }}, 10)
-    //User holen, der in SessionStorage angegeben ist
-    .then(res => {return res.find(element => element.username == user)})
-    //Favoritenliste des Users aus SessionStorage
-    .then(e => {return e["anythingelse..."]})
-    /*In der Favoritenliste des Users schauen, ob der auf der Seite angezeigte Drink bereits ein Favorit ist oder nicht.
-    Wenn der Drink in der Liste vorkommt, wird beim Like Button der Wert auf "Unlike" gestellt */
-    .then(value => (value.split(",")).includes(drinkIdURL)
-    ? button.setAttribute("value","Unlike") 
-    : button.setAttribute("value","Like"))
-    
 
-
-
+export default updateButton
             
-
-
-
-
 

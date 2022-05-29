@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
         <!--search-container button--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="scripts/login.js"></script>
+    <script type="module" src="scripts/refreshHTML.js" ></script>
 
 </head>
 
@@ -17,14 +18,12 @@
     
     <a id="back" href="./index.html">Back</a>
     
-    
-    Drink ID: <span id="drinkId"></span><br>
-    <br>
     <img id="" src="" alt="">
     
     <b>Name:         </b>  <span id="strDrink"></span><br>
     <b>Ingredients:   </b>  <span id="strIngredient"></span><br>
     <b>Preparation:    </b>  <span id="strInstructions"></span><br>
+    
     <div id="likeBtn"></div>       
 
 
@@ -67,7 +66,6 @@
             });
 
             //Mixen und servieren
-            document.getElementById("drinkId").textContent = data.drinks[0].idDrink;
             document.getElementById("strDrink").textContent = data.drinks[0].strDrink;
             document.getElementById("strInstructions").textContent = data.drinks[0].strInstructions;
             document.querySelector("img").src=  data.drinks[0].strDrinkThumb       
@@ -77,9 +75,8 @@
 </script>
 
 </body>
-
 <script type="module" src="scripts/likeUnlike.js"></script>  
-   
+
 </html>
 
 

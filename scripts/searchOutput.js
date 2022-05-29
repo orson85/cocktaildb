@@ -5,7 +5,7 @@ function searchOutput(daten){
     //Trefferansicht: Anzahl Treffer
     let hitCnt = document.createElement("p")
     hitCnt.innerText = "Anzahl Treffer: "+daten.drinks.length
-    document.getElementById("hits").appendChild(hitCnt)
+    document.getElementById("hitCnt").appendChild(hitCnt)
 
     //Trefferansicht: Trefferliste
     daten.drinks.forEach(element => {
@@ -13,6 +13,7 @@ function searchOutput(daten){
         let link = document.createElement("a")
         let name = document.createElement("p")
         let container = document.createElement("div")
+        container.setAttribute("class","hit")
 
         let url = new URL("http://127.0.0.1:5500/view.html")
         url.searchParams.set('i', element.idDrink)

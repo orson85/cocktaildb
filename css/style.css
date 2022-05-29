@@ -2,6 +2,44 @@ body {
   background-color: mistyrose;
 }
 
+#suche {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#hitCnt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#hits {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  gap: .3em;
+}
+
+.hit {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  border: #333;
+  border-style: solid;
+}
+
 .like-button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -95,50 +133,3 @@ body {
   }
 }
 /*# sourceMappingURL=style.css.map */
-
-/* Login */
-
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-header {
-  position: center;
-  text-align: center;
-  margin-bottom: 0.5em;  
-}
-
-#loginform {
-background-color: aqua;
-margin-left: 20%;
-margin-right: 20%;
-margin-bottom: 5%;
-padding-top: 5%;
-padding-bottom: 10%;
-border-radius: 10px;
-}
-
-.Ueberschrift1 {
-  position: center;
-  margin-top: 2em;
-  margin-bottom: 1em;
-}
-
-.mb-3 {
-  padding-top: 1em;
-}
-
-#loginbutton {
-  margin-top: 1em;
-  margin-bottom: 3em;
-}
