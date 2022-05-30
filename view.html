@@ -1,82 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
-    <link rel="stylesheet" href="https://unpkg.com/open-props"/>
-    <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Drink View</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='css/view.css'>
+        <link rel="stylesheet" href="https://unpkg.com/open-props"/>
+        <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
         <!--search-container button--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="scripts/login.js"></script>
-    <script type="module" src="scripts/refreshHTML.js" ></script>
+        <script src="scripts/login.js"></script>
+        <script type="module" src="scripts/refreshHTML.js" ></script>
+    </head>
 
-</head>
+    <body>
+        <nav>
+            <a id="back" href="./index.html">Back</a>
+        </nav>
 
-<body>
-    
-    <a id="back" href="./index.html">Back</a>
-    
-    <img id="" src="" alt="">
-    
-    <span id="strDrink"></span> <br>
-    <b>Ingredients:   </b>  <span id="strIngredient"></span><br>
-    <b>Preparation:    </b>  <span id="strInstructions"></span><br>
-    
-    <div id="likeBtn"></div>       
+        <header></header>
 
+        <main>
+            <span id="strDrink"></span> <br>
+            <img id="drinkImg" src="" alt="">
+            <b>Ingredients:   </b>  <span id="strIngredient"></span><br>
+            <b>Preparation:    </b>  <span id="strInstructions"></span><br>
+            <div id="likeBtn"></div>       
+        </main>
 
-<script>
-//Alles um drinkId aus der URL zu lesen, die CocktailAPI abzufragen und Inhalte darzustellen.
+        <footer></footer>
 
-        //Bestellung aufnehmen
-        const drinkId = window.location.search; // Variable mit URL Param
-        const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php${drinkId}` //Fetch Request mit URL Param als Drink ID
-        
-        //Zutaten holen
-        async function getData() {
-            const response = await fetch(url);
-            const data = await response.json();
+    </body>
 
-            //ACHTUNG -> Untere Funktion muss noch ein NULL Check für Measures rein (siehe Vodka Fizz ID:169767
-            // Array erstellen mit allen Zutaten & Measures, die nicht null sind (QuickNDirty)
-            let ingredArr = [] 
-            if (data.drinks[0].strIngredient1 != null ) { ingredArr.push(`${data.drinks[0].strMeasure1 } ${data.drinks[0].strIngredient1 }`)}
-            if (data.drinks[0].strIngredient2 != null ) { ingredArr.push(`${data.drinks[0].strMeasure2 } ${data.drinks[0].strIngredient2 }`)}
-            if (data.drinks[0].strIngredient3 != null ) { ingredArr.push(`${data.drinks[0].strMeasure3 } ${data.drinks[0].strIngredient3 }`)}
-            if (data.drinks[0].strIngredient4 != null ) { ingredArr.push(`${data.drinks[0].strMeasure4 } ${data.drinks[0].strIngredient4 }`)}
-            if (data.drinks[0].strIngredient5 != null ) { ingredArr.push(`${data.drinks[0].strMeasure5 } ${data.drinks[0].strIngredient5 }`)}
-            if (data.drinks[0].strIngredient6 != null ) { ingredArr.push(`${data.drinks[0].strMeasure6 } ${data.drinks[0].strIngredient6 }`)}
-            if (data.drinks[0].strIngredient7 != null ) { ingredArr.push(`${data.drinks[0].strMeasure7 } ${data.drinks[0].strIngredient7 }`)}
-            if (data.drinks[0].strIngredient8 != null ) { ingredArr.push(`${data.drinks[0].strMeasure8 } ${data.drinks[0].strIngredient8 }`)}
-            if (data.drinks[0].strIngredient9 != null ) { ingredArr.push(`${data.drinks[0].strMeasure9 } ${data.drinks[0].strIngredient9 }`)}
-            if (data.drinks[0].strIngredient10 != null) { ingredArr.push(`${data.drinks[0].strMeasure10} ${data.drinks[0].strIngredient10}`)}
-            if (data.drinks[0].strIngredient11 != null) { ingredArr.push(`${data.drinks[0].strMeasure11} ${data.drinks[0].strIngredient11}`)}
-            if (data.drinks[0].strIngredient12 != null) { ingredArr.push(`${data.drinks[0].strMeasure12} ${data.drinks[0].strIngredient12}`)}
-            if (data.drinks[0].strIngredient13 != null) { ingredArr.push(`${data.drinks[0].strMeasure13} ${data.drinks[0].strIngredient13}`)}
-            if (data.drinks[0].strIngredient14 != null) { ingredArr.push(`${data.drinks[0].strMeasure14} ${data.drinks[0].strIngredient14}`)}
-            if (data.drinks[0].strIngredient15 != null) { ingredArr.push(`${data.drinks[0].strMeasure15} ${data.drinks[0].strIngredient15}`)}
-                // forEach der die Ingredients in ein Listenelement stopft und diese dann an den Span "strIngredient" anhängt.
-                ingredArr.forEach(element => {
-                item = document.createElement("li")
-                item.append(element)
-                document.getElementById("strIngredient").append(item)
-                
-            });
-
-            //Mixen und servieren
-            document.getElementById("strDrink").textContent = data.drinks[0].strDrink;
-            document.getElementById("strInstructions").textContent = data.drinks[0].strInstructions;
-            document.querySelector("img").src=  data.drinks[0].strDrinkThumb+"/preview"     
-        }
-
-        window.onload = getData()
-</script>
-
-</body>
-<script type="module" src="scripts/likeUnlike.js"></script>  
-<script type="module" src="scripts/request.js"></script>  
+    <script type="module" src="scripts/likeUnlike.js"></script>  
+    <script type="module" src="scripts/request.js"></script>  
+    <script type="module" src="scripts/viewListDrinks.js"></script>  
 
 </html>
 
