@@ -3,35 +3,37 @@ function searchOutput(daten){
     document.getElementById("hits").innerHTML='';
     document.getElementById("hitCnt").innerHTML='';
 
-    //Trefferansicht: Anzahl Treffer
-    let hitCnt = document.createElement("p")
-    hitCnt.innerText = "Anzahl Treffer: "+daten.drinks.length
-    document.getElementById("hitCnt").appendChild(hitCnt)
+    if (daten != null) {
+        //Trefferansicht: Anzahl Treffer
+        let hitCnt = document.createElement("p")
+        hitCnt.innerText = "Anzahl Treffer: "+daten.drinks.length
+        document.getElementById("hitCnt").appendChild(hitCnt)
 
-    //Trefferansicht: Trefferliste
-    daten.drinks.forEach(element => {
-        let image = document.createElement("img")
-        let link = document.createElement("a")
-        let name = document.createElement("p")
-        let container = document.createElement("div")
-        container.setAttribute("class","hit")
+        //Trefferansicht: Trefferliste
+        daten.drinks.forEach(element => {
+            let image = document.createElement("img")
+            let link = document.createElement("a")
+            let name = document.createElement("p")
+            let container = document.createElement("div")
+            container.setAttribute("class","hit")
 
-        let url = new URL("http://127.0.0.1:5500/view.html")
-        url.searchParams.set('i', element.idDrink)
-        link.setAttribute('href', url);
+            let url = new URL("http://127.0.0.1:5500/view.html")
+            url.searchParams.set('i', element.idDrink)
+            link.setAttribute('href', url);
 
 
-        container.setAttribute("id", element.idDrink)
-        image.setAttribute("src", element.strDrinkThumb+"/preview")
-        //link.setAttribute("href", `${element.idDrink}`)
-        link.appendChild(image)
-        container.appendChild(link)
-        container.appendChild(name)
-        name.innerText=element.strDrink
+            container.setAttribute("id", element.idDrink)
+            image.setAttribute("src", element.strDrinkThumb+"/preview")
+            //link.setAttribute("href", `${element.idDrink}`)
+            link.appendChild(image)
+            container.appendChild(link)
+            container.appendChild(name)
+            name.innerText=element.strDrink
 
-        
-        document.getElementById("hits").appendChild(container)
-    });
+            
+            document.getElementById("hits").appendChild(container)
+        });
+    } else {hitCnt.innerText = "Keine Drinks gefunden."}
 }
 
 

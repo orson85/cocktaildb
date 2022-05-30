@@ -6,42 +6,6 @@
 
 
 
-// //getData
-// async function getData(field) {
-//     const request = await fetch(`https://343505-26.web.fhgr.ch/api/gaming/${field}`);
-//     const data = await request.json();
-//     if (data !== null) { return data } else {alert("Nothing found.")}
-// }
-
-
-// async function request(field,method,params) {
-
-//   await fetch(`https://343505-26.web.fhgr.ch/api/gaming/${field}`, {
-//     method: `${method}`,
-//     headers: 
-//       { 'Content-Type': 'application/json' }
-//     ,
-//     body: JSON.stringify(params)
-//   })
-//   .then((response) => {return response.json()})
-//   .then((response) => {console.log("SUCCEEDED",response)})
-//   .catch(e => console.error("FAILED:",e.message))
-  
-//   ;
-//   //const content = await rawResponse.json();
-
-// };
-
-// request("data/","GET")
-
-// getData("data")
-// getData("data/1")
-// getData("data/2")
-
-
-
-
-
 // POST Befehl
 
 //PostData
