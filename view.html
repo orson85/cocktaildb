@@ -14,14 +14,13 @@
 
 </head>
 
-
 <body>
     
     <a id="back" href="./index.html">Back</a>
     
     <img id="" src="" alt="">
     
-    <b>Name:         </b>  <span id="strDrink"></span><br>
+    <span id="strDrink"></span> <br>
     <b>Ingredients:   </b>  <span id="strIngredient"></span><br>
     <b>Preparation:    </b>  <span id="strInstructions"></span><br>
     
@@ -69,7 +68,7 @@
             //Mixen und servieren
             document.getElementById("strDrink").textContent = data.drinks[0].strDrink;
             document.getElementById("strInstructions").textContent = data.drinks[0].strInstructions;
-            document.querySelector("img").src=  data.drinks[0].strDrinkThumb       
+            document.querySelector("img").src=  data.drinks[0].strDrinkThumb+"/preview"     
         }
 
         window.onload = getData()
