@@ -5,6 +5,10 @@ header {
     margin-bottom: 3em; 
 }
 
+nav {
+    padding-top: 1em; 
+}
+
 main {
   background-color: aqua;
   margin-left: 30%;
@@ -15,8 +19,9 @@ main {
   border-radius: 10px;
 }
 
-.Ueberschrift1 {
+#ueberschrift {
     position: center;
+    font-family: 'Playfair Display', serif;
     margin-top: 2em;
     margin-bottom: 1em;
 }

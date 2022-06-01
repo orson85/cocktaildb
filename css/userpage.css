@@ -6,11 +6,30 @@ header {
 }
 
 nav {
-    position: center;
-    text-align: center;
     margin-top: 2em;
     margin-bottom: 1.5em;  
 }
+
+ul {
+    list-style-type: none;
+    background-color: #4876FF;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+li {
+    display: inline;
+}
+
+li a {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 17px;
+  }
 
 main {
     background-color: aqua;
@@ -21,11 +40,11 @@ main {
     padding-bottom: 5%;
     border-radius: 10px;
   }
-  
 
-.navigation {
-    display: inline;
-    float: center;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
+#begruessung {
+  font-family: 'Playfair Display', serif;
+}
+
+#favoriten {
+  font-family: 'Playfair Display', serif;
 }

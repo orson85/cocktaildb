@@ -31,7 +31,7 @@ function logout () {    //Diese Funktion ist dazu da, den Request für das Logou
       .then(response => {               //Dieser Teil der Funktion ist dazu da, allfällige Fehlermeldungen abzufangen. 
         if (response.ok==true) {
           sessionStorage.clear();
-          window.open("userpage.html");
+          window.open("logout.html");
         }
 
         else {

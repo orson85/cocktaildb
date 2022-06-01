@@ -3,8 +3,10 @@
     <head>
         <meta charset='utf-8'>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Cocktail API</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+        <title>Startseite - CocktailDB</title>
+
         <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
         <link rel="stylesheet" href="https://unpkg.com/open-props"/>
         <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
@@ -14,11 +16,12 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+
         <script src='scripts/script.js'></script>
         <script src='scripts/login.js'></script>
+        <script src='scripts/newlogin.js'></script>
         <script type="module" src='scripts/searchOutput.js'></script>
         <script type="module" src='scripts/searchBtn.js'></script>
-        <script src='scripts/newlogin.js'></script>
     </head>
 
     <body onload="loginstatus()">
@@ -47,7 +50,6 @@
                             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                             <fieldset>
                                 <h3 class="Ueberschrift1">Willkommen auf der Cocktail-Database</h3>
-                                <legend>Login:</legend>
                                 <div class="col-8 offset-2">
                                     <label for="username" class="form-label">Username:</label>
                                     <input type="text" class="form-control" id="username">
