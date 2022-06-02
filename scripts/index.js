@@ -71,4 +71,3 @@ function loginstatus() {  //Diese Funktion ist dazu da, den Login-Button auf ind
   console.log(btn);
   console.log(status);
 }
-

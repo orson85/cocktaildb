@@ -48,3 +48,7 @@ main {
 #favoriten {
   font-family: 'Playfair Display', serif;
 }
+
+.favListItem {
+  all: inherit;
+}

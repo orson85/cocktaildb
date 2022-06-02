@@ -18,7 +18,6 @@
     width: 100%;
     display: flex;
     max-width: 800px;
-    max-height: 300px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
@@ -37,6 +36,22 @@
 
 #drinkImg {
     height: 300px;
-    width: 300px;
 
  }
+
+#like {
+    background-color: black;
+    color: white;
+    font-size: large;
+    font-weight: 500;
+    border-radius: 3px;
+    width: 80px;
+}
+
+#like:hover {
+    opacity: 80%;
+}
+
+.topView {
+    display: inline-flex;
+}
