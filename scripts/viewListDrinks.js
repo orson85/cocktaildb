@@ -38,7 +38,7 @@
                     //Mixen und servieren
                     document.getElementById("strDrink").textContent = data.drinks[0].strDrink;
                     document.getElementById("strInstructions").textContent = data.drinks[0].strInstructions;
-                    document.querySelector("img").src=  data.drinks[0].strDrinkThumb+"/preview"     
+                    document.querySelector("img").src=  data.drinks[0].strDrinkThumb     
                 }
 
                 window.onload = getData()

@@ -1,11 +1,42 @@
+
+
+#back {
+    color: aliceblue;
+    background-color: rgb(31, 29, 26);
+    font-weight: bold;
+    border: none;
+    margin: auto;
+    display: flex;
+    width: 10%;
+    padding: 10px;
+
+}
+
+.drinkContainer {
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    display: flex;
+    max-width: 800px;
+    max-height: 300px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.drinkContainer > div {
+    margin: 10px;
+}
+
 #strDrink {
-    font-size: x-large;
+    font-size: 2em;
 }
 
 #drinkImg {
     opacity: 50%;
 }
 
-#strIngredient {
-    color: aquamarine;
-}
+
+#drinkImg {
+    height: 300px;
+    width: 300px;
+
+ }
