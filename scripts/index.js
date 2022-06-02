@@ -72,13 +72,3 @@ function loginstatus() {  //Diese Funktion ist dazu da, den Login-Button auf ind
   console.log(status);
 }
 
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == loginform) {
-        modal.style.display = "none";
-    }
-}
-
