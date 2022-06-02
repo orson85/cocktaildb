@@ -5,8 +5,10 @@ header {
 }
 
 body {
-  background-image: url("media/hintergrundbild.jpg");
+  background-image: url("media/hintergrundbild.jpg");  /*Quelle: "http://www.freepik.com">Designed by vectorpocket / Freepik */
   background-color: white;
+  background-size: 100%;
+  background-repeat: repeat-x;
 }
 
 nav {
@@ -36,6 +38,7 @@ nav {
   padding-right: 10em;
   padding-left: 10em;
 }
+
 /*Login-Fenster*/
 
 .modal {
@@ -101,8 +104,7 @@ nav {
           justify-content: center;
 }
 
-
-
+/*Like-Button*/
 
 .like-button {
   display: -webkit-box;

@@ -33,28 +33,28 @@
             <div class="container">
                 <div class="row">
                     <div class="col-8 offset-2">
-                        <form>
+                        <form>      <!--Formular für die Anpassung der Userdaten-->
                             <fieldset>
                                 <br>
                                 <div class="mb-3">                                 
-                                    <label for="username" class="form-label">Neuer Benutzername:</label>
+                                    <label for="username" class="form-label">Neuer Benutzername:</label> <!--Neuer Benutzername eingeben.-->
                                     <input type="text" class="form-control" id="changeusername">
                                 </div>
                                 <div class="mb-3">   
-                                    <label for="confirmusername" class="form-label">Benutzername bestätigen:</label>
+                                    <label for="confirmusername" class="form-label">Benutzername bestätigen:</label> <!--Neuer Benutzername bestätigen.-->
                                     <input type="text" class="form-control" id="confirmusername">
                                 </div>
                                 <div class="mb-3">   
-                                    <label for="password" class="form-label">Neues Passwort:</label>
+                                    <label for="password" class="form-label">Neues Passwort:</label> <!--Neues Passwort eingeben.-->
                                     <input type="password" class="form-control" id="changepassword">
                                 </div>
                                 <div class="mb-3">   
-                                    <label for="confirmpassword" class="form-label">Neues Passwort bestätigen:</label>
+                                    <label for="confirmpassword" class="form-label">Neues Passwort bestätigen:</label> <!--Neues Passwort bestätigen.-->
                                     <input type="password" class="form-control" id="confirmpassword">
                                 </div>
                                 <br>
                                 <div class="mb-3">   
-                                    <button type="submit" class="btn btn-primary" id="createbutton" onclick="checkchange(document.getElementById('changeusername').value,document.getElementById('changepassword').value)">Änderungen speichern</button>                                
+                                    <button type="submit" class="btn btn-primary" id="createbutton" onclick="checkchange(document.getElementById('changeusername').value,document.getElementById('changepassword').value)">Änderungen speichern</button> <!--Daten werden gesendet-->                             
                                 </div>
                             </fieldset>
                         </form>
