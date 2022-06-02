@@ -11,18 +11,18 @@ function newlogin (email, username, password) { //Diese Funktion ist dazu da, de
     body: JSON.stringify(data),
   };
 
-  const request = (retries) =>
+  //const request = (retries) =>
   fetch("https://343505-26.web.fhgr.ch/api/gaming/user/", requestOptions)
-    .then(res => {                              //Testing, Fehlervermeidung auf Serverseite
-      if (res.ok) {
-        return res.json()
-      }
-      if (retries>0) {
-        console.log(retries)
-        return request(retries-1)
-      }
-    })
-    .catch(error => console.error(error))
+    // .then(res => {                              //Testing, Fehlervermeidung auf Serverseite
+    //   if (res.ok) {
+    //     return res.json()
+    //   }
+    //   if (retries>0) {
+    //     console.log(retries)
+    //     return request(retries-1)
+    //   }
+    // })
+    // .catch(error => console.error(error))
 
     .then(response => {                           //Dieser Teil der Funktion ist dazu da, allfällige Fehlermeldungen abzufangen und auszugeben. 
     if (response.ok==true) {
