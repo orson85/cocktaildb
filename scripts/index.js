@@ -1,4 +1,4 @@
-import request from "./request.js";
+import request from "./request.js"
 
 document.getElementById("loginbutton").addEventListener("click", (e) => {
   e.preventDefault();
