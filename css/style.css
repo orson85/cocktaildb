@@ -101,23 +101,8 @@ nav {
           justify-content: center;
 }
 
-#hits {
-  display: -ms-grid;
-  display: grid;
-  gap: .3em;
-}
 
-.hit {
-  display: -ms-grid;
-  display: grid;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  border: #333;
-  border-style: solid;
-}
+
 
 .like-button {
   display: -webkit-box;
