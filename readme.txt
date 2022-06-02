@@ -1,13 +1,3 @@
-Memo:
-- alte User löschen und welche für Präsentation aufsetzen
-- Erwähnen, dass API nicht mehr als 25 Treffer zulässt und auch keinen Offset erlaubt
-- Webseite am Ende noch auf ursgros.ch für Demo
-
-Planned features:
-- Delete FavDrink Button in Userpage
-- One Page Setup -> Detail-Anzeige einzelner Drinks als Fenster innerhalb index.html, anstelle seperate Seite
-- 
-
 Dokumentation: 
 
 Diese Anwendung ist ein Projekt der beiden IW-Studierenden Jannik Christen und Urs Grossenbacher, welche im Rahmen des Moduls "DGUI/FRONT2"
@@ -32,6 +22,8 @@ erstellen. Das Login-Formular wird direkt auf der Startseite aufgerufen und darg
 - searchOutput.css (Design der angezeigten Resultate)
 - searchOutput.js (Funktionalität der angezeigten Resultate)
 - searchBtn.js  (Funktionalität des Suchbuttons)
+
+- style.css.map 
 
 Detailansicht der Rezepte: 
 
@@ -64,6 +56,7 @@ oder sich ausloggen. Folgende Files beziehen sich auf diese Seite:
 - userpage.html (Struktur der Userpage)
 - userpage.css (Design der Userpage)
 - userpage.js (Funktionalität der Userpage)
+- userPageFavList.js (Funktionalität der Favoritenliste)
 
 Userdaten ändern
 
@@ -81,3 +74,4 @@ kann er von hier wieder auf die Startseite gelangen. Folgende Files beziehen sic
 
 - logout.html (Struktur der Logoutpage)
 - logout.css (Design der Logoutpage)
+- logout.js (Funktionalität der Logoutpage)

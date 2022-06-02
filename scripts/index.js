@@ -15,8 +15,6 @@ document.getElementById("loginbutton").addEventListener("click", (e) => {
           //   "Content-Type": "application/json"},
           body: JSON.stringify(logindata)}
 
-
-
   request("login/", requestOptions, 3)
     .then(res => { if (res.username == username) {
     console.log(res)
@@ -26,20 +24,8 @@ document.getElementById("loginbutton").addEventListener("click", (e) => {
     window.open("userpage.html");
   }
   ).catch((err) => {console.error(err);})})
-  
 
 
-
-  // // function checklogin (username, password) { //Diese Funktion ist dazu da, zu überprüfen, ob die Eingabe nicht einfach leer ist. 
-
-// //     if (username == "" || password == "") {
-// //         alert("Eingabe Fehlerhaft. Bitte fülle das Formular vollständig aus.");
-// //     }
-
-// //     else {
-// //       login(username, password);
-// //     }
-// // }
 
 
 

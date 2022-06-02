@@ -473,5 +473,4 @@ const content = {
 
 request("user/0/", content, 2).then(res => {console.log(res)})
 //request("data", content, 2).then(res => {console.log(res)})
-//request("user/ursgros@gmail.com", content, 2).then(res => {console.log(res)})
 
