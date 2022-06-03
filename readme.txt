@@ -76,12 +76,20 @@ kann er von hier wieder auf die Startseite gelangen. Folgende Files beziehen sic
 - logout.css (Design der Logoutpage)
 - logout.js (Funktionalität der Logoutpage)
 
+Genutzte Quellen:
+- w3schools.com
+- developer.mozilla.org
+- stackoverflow.com
+- www.thecocktaildb.com (API)
+- Youtube ("Web Dev Simplified", "Programming with Mosh", "freeCodeCamp.org")
 
 Issues:
 - Nach der Registrierung werden Nutzer auf "userpage.html" weitergeleitet. Dort werden Daten eines anderen Nutzers angezeigt ("userid" : "fdlksdjfdk").
 - Eingabefehler-Meldungen konnten nicht mehr implementiert werden. (z.B. falsches Passwort bei Login)
 - view.html -> bei Menge wird "null" auf Seite angezeigt ausgegeben, wenn missing in API.
 - view.html -> "back" - Button verweist auf "index.html": Irreführend, wenn man per userpage.html auf die Seite gelangt ist, da back eine Rückkehr dorthin impliziert
+- User identifikation über username ist problematisch -> im Nachhinein besser über userid bzw. Email.
+
 
 Missing/future Features:
 - Email-Validation
