@@ -1,72 +1,102 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
-    <link rel="stylesheet" href="https://unpkg.com/open-props"/>
-    <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
-    <!--search-container button--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="module" src='scripts/script.js'></script>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+        <title>Startseite - CocktailDB</title>
+
+        <link rel='stylesheet' type='text/css' media='screen' href='css/index.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='css/searchOutput.css'>
+        <link rel="stylesheet" href="https://unpkg.com/open-props"/>
+        <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
+        <link rel="W3Schools" href="https://www.w3schools.com/">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+
+        <script src='scripts/loginstatus.js'></script>
+        <script type="module" src='scripts/index.js'></script>
+        <script type="module" src='scripts/searchOutput.js'></script>
+        <script type="module" src='scripts//trash/internAPI.js'></script>
+        <script type="module" src='scripts/searchBtn.js'></script>
+    </head>
+
+    <body onload="loginstatus()">
     
-</head>
-<body>
+        
+        <nav>
+            <!--<ul><a href="userpage.html">Dein Konto</a></ul>-->
+            <ul><a id=btnlink><button class="btn btn-primary" id="indexlogin" onclick="document.getElementById('login').style.display='block'" style="width:auto;">Login</button></a></ul>
+            <!--<ul><a href="logout.html">Logout</a></ul>-->
+        </nav>
 
+        <header>
+            <div class="row">
+                <h1 id="titel1">Die CocktailDB - Eine visuelle Darstellung</h1>
+                <h2 id="titel2">Ein DGUI-Projekt von Jannik Christen und Urs Grossenbacher</h2>
+            </div>
+            <div class="row" id="beschreibung">
+                <p>Diese Seite ist ein Projekt der beiden IW-Studierenden Urs und Jannik und entstand im Rahmen des Moduls "DGUI/FRONT2". Zweck dieser Seite ist die visuelle Darstellung der Daten der "CocktailDB", welcher diverse Rezepte zu Cocktail-Drinks zur Verfügung stellt.</p>
+            </div>
+        </header>
 
-<h2>PAGE: Suche</h2>   
-<div id="testsuche">
-    <div class="search-container">
-        <form action="/action_page.php">
-          <input type="text" placeholder="Search..." name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-      </div>
-</div>
+            <!--PAGE: Login-Fenster-->
+            <div id='login' class="modal">
+                <div class="row">
+                    <div class="col-8 offset-2">              
+                        <form id="loginform">
+                            <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
+                            <fieldset>
+                                <h3 class="Ueberschrift1">Willkommen auf der Cocktail-Database</h3>
+                                <div class="col-8 offset-2">
+                                    <label for="username" class="form-label">Username:</label>
+                                    <input type="text" class="form-control" id="username">
+                                </div>
+                                <div class="col-8 offset-2">
+                                    <label for="password" class="form-label">Passwort:</label>
+                                    <input type="password" class="form-control" id="password">
+                                <div class="col-10 offset-1">
+                                    <button type="submit" class="btn btn-primary" id="loginbutton">Login</button>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8 offset-2">
+                                        <p>Du besuchst uns zum ersten Mal? Erstelle deinen Account <a href="newlogin.html">hier</a>.</p>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
+            <!--PAGE: Suche-->
+            <div id="suche">
+                <div id="searchWrapper">
+                    <div class="input-group">
+                        <input 
+                            type="text"
+                            name="searchBar"
+                            id="searchBar"
+                            placeholder="Search..."
+                            class="form-control"/>
+                        <input type="button" value="Go!" class="btn btn-primary"  id="searchButton">
+                    </div>
+                </div>
+            </div>
 
-<script>
+            <!--PAGE: Suchtreffer-->
+            <div id="hitCnt"></div>
+            <div id="hits"></div>
+    
 
-addEventListener()
-
-</script>
-
-
-<h2>PAGE: Suchtreffer</h2>   
-<div id="hits"></div>
-
-<h2>PAGE: Detail 1 Drink</h2>
-
-
-
-<div id="drink">
-    <ul id="zutaten"></ul>
-</div>
-
-<!--LIKE BUTTON-->
-<div>
-    <input id="like" type="button" value="Like">
-</div>
-
-
-<script>
-    document.addEventListener
-
-
-    const button = document.getElementById("like");
-
-    button.addEventListener('click', updateButton);
-
-    function updateButton() {
-        if (button.value === 'Like') {
-            button.value = 'Unlike';
-        } else {
-            button.value = 'Like';
-        }
-    }
-</script>
-
-
-</body>
+        <footer></footer>
+    </body>
 </html>
+
+
+
+

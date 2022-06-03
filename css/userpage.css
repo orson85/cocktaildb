@@ -1,0 +1,54 @@
+header {
+    position: center;
+    text-align: center;
+    margin-top: 4em;
+    margin-bottom: 3em; 
+}
+
+nav {
+    margin-top: 2em;
+    margin-bottom: 1.5em;  
+}
+
+ul {
+    list-style-type: none;
+    background-color: #4876FF;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+li {
+    display: inline;
+}
+
+li a {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 17px;
+  }
+
+main {
+    background-color: aqua;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-radius: 10px;
+  }
+
+#begruessung {
+  font-family: 'Playfair Display', serif;
+}
+
+#favoriten {
+  font-family: 'Playfair Display', serif;
+}
+
+.favListItem {
+  all: inherit;
+}

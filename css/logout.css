@@ -1,0 +1,26 @@
+header {
+    position: center; 
+    margin-bottom: 3em;
+    margin-top: 2em;
+    margin-left: 29%;
+    margin-right: 25%;
+}
+
+.main {
+    position: center;
+}
+
+#logoutueberschrift {
+    font-family: 'Playfair Display', serif;
+}
+
+#gatsbygif {                /*Quelle: https://gifer.com/de/DOFB*/
+    position: center;
+    height: 23em;
+}
+
+#zurueck {
+    position: center;
+    margin-top: 8%;
+}
+

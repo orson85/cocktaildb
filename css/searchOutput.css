@@ -1,0 +1,90 @@
+#searchBar {
+    border: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+#searchButton {
+    color: aliceblue;
+    background-color: rgb(31, 29, 26);
+    font-weight: bold;
+    border: none;
+}
+
+#hitCnt {
+    padding-top: 1em;
+}
+
+#hits{
+    margin: auto;
+    max-width: 900px;
+    background-color: rgb(197, 197, 197);
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    padding: 10px 0 10px 0;
+    border: black;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+
+    }
+
+#hits:empty {
+    display: none;
+}
+
+#hit {
+    grid-column: 1/4;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.container {
+    padding: 0 0 0 0;
+    position: relative;
+    justify-content: center;
+    width: 175px;
+    height: 200px;
+      
+}
+
+.link {
+    display: block;
+    width: 192px;
+    height: 192px;
+    margin: 0;
+    padding: 0;
+    border: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: white;
+    background:rgb(0, 0, 0, 0.6);
+    font-weight: bold;
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    left: 1;
+    height: 192px;
+    width: 192px;
+    margin: 0;
+    opacity: 100;
+}
+
+.name:hover {
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.name:visited {
+    color: white;
+}

@@ -1,0 +1,57 @@
+
+
+#back {
+    color: aliceblue;
+    background-color: rgb(31, 29, 26);
+    font-weight: bold;
+    border: none;
+    margin: auto;
+    display: flex;
+    width: 10%;
+    padding: 10px;
+
+}
+
+.drinkContainer {
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    display: flex;
+    max-width: 800px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.drinkContainer > div {
+    margin: 10px;
+}
+
+#strDrink {
+    font-size: 2em;
+}
+
+#drinkImg {
+    opacity: 50%;
+}
+
+
+#drinkImg {
+    height: 300px;
+
+ }
+
+#like {
+    background-color: black;
+    color: white;
+    font-size: large;
+    font-weight: 500;
+    border-radius: 3px;
+    width: 80px;
+}
+
+#like:hover {
+    opacity: 80%;
+}
+
+.topView {
+    display: inline-flex;
+}
