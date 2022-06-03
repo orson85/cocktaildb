@@ -83,16 +83,22 @@ Genutzte Quellen:
 - www.thecocktaildb.com (API)
 - Youtube ("Web Dev Simplified", "Programming with Mosh", "freeCodeCamp.org")
 
+- GIF Logout: https://gifer.com/de/DOFB*/ 
+- Hintergrundbild Startseite: http://www.freepik.com , Designed by vectorpocket
+
 Issues:
 - Nach der Registrierung werden Nutzer auf "userpage.html" weitergeleitet. Dort werden Daten eines anderen Nutzers angezeigt ("userid" : "fdlksdjfdk").
 - Eingabefehler-Meldungen konnten nicht mehr implementiert werden. (z.B. falsches Passwort bei Login)
 - view.html -> bei Menge wird "null" auf Seite angezeigt ausgegeben, wenn missing in API.
 - view.html -> "back" - Button verweist auf "index.html": Irreführend, wenn man per userpage.html auf die Seite gelangt ist, da back eine Rückkehr dorthin impliziert
 - User identifikation über username ist problematisch -> im Nachhinein besser über userid bzw. Email.
+- Feature "Userdaten ändern" funktioniert nicht wie gewünscht. Das Formular, sowie die Fehlermeldungen stehemwie gewünscht, im Backend wird jedoch eine Fehlermeldung ausgegeben.
 
 
-Missing/future Features:
+Missing/Future Features:
 - Email-Validation
 - Passwortlänge & -Stärke 
 - Responsive Design
 - Favorisierten Drink löschen über Liste in "userpage.html"
+- Erweiterung der Suche um ein Suchformular
+- User-Konto selbst löschen
