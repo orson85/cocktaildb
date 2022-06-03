@@ -75,3 +75,16 @@ kann er von hier wieder auf die Startseite gelangen. Folgende Files beziehen sic
 - logout.html (Struktur der Logoutpage)
 - logout.css (Design der Logoutpage)
 - logout.js (Funktionalität der Logoutpage)
+
+
+Issues:
+- Nach der Registrierung werden Nutzer auf "userpage.html" weitergeleitet. Dort werden Daten eines anderen Nutzers angezeigt ("userid" : "fdlksdjfdk").
+- Eingabefehler-Meldungen konnten nicht mehr implementiert werden. (z.B. falsches Passwort bei Login)
+- view.html -> bei Menge wird "null" auf Seite angezeigt ausgegeben, wenn missing in API.
+- view.html -> "back" - Button verweist auf "index.html": Irreführend, wenn man per userpage.html auf die Seite gelangt ist, da back eine Rückkehr dorthin impliziert
+
+Missing/future Features:
+- Email-Validation
+- Passwortlänge & -Stärke 
+- Responsive Design
+- Favorisierten Drink löschen über Liste in "userpage.html"

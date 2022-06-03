@@ -26,7 +26,6 @@ function searchOutput(daten){
 
             container.setAttribute("id", element.idDrink)
             image.setAttribute("src", element.strDrinkThumb+"/preview")
-            //link.setAttribute("href", `${element.idDrink}`)
             link.appendChild(image)
             link.setAttribute("class","link")
             
